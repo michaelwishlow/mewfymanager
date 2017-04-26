@@ -1,0 +1,18 @@
+{
+  "name": "mewfymanager",
+  "version": "1.0.0",
+  "description": "user management console",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "michael wishlow",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.8",
+    "redis": "^2.7.1"
+  }
+}
