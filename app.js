@@ -25,3 +25,11 @@ app.use(bodyParser.urlencoded({extended:false}));
 // Method Overrride
 app.use(methodOverride('_method'));
 
+
+app.get('/', function(req, res, next){
+		res.render('searchusers');
+});
+
+app.listen(port, function(){
+		console.log('Server started on port'+port);
+});
