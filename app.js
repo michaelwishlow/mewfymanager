@@ -5,6 +5,13 @@ const  bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const redis = require('redis');
 
+//Create Redis Client
+let client = redis.createClient();
+
+client.on('connect', function(){
+	console.log('Connected to Redis..')
+});
+
 
 //Set Port
 
@@ -26,8 +33,16 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
 
 
+// Search Page
 app.get('/', function(req, res, next){
 		res.render('searchusers');
+});
+
+//Search Processing
+app.post('/users/search', function(req, res, next){
+	let id = req.body.id;
+
+
 });
 
 app.listen(port, function(){
