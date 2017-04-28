@@ -39,10 +39,21 @@ app.get('/', function(req, res, next){
 });
 
 //Search Processing
-app.post('/users/search', function(req, res, next){
+app.post('/user/search', function(req, res, next){
 	let id = req.body.id;
 
-
+	client.hgetall(id, function(err, obj){
+		if(!obj){
+			res.render('searchusers', {
+				error: ' User does not exist'
+			});
+		}else {
+			obj.id = id;
+			res.render('details', {
+				user: obj
+			});
+		}
+	});
 });
 
 app.listen(port, function(){
