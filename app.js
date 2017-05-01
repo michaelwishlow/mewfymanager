@@ -56,6 +56,33 @@ app.post('/user/search', function(req, res, next){
 	});
 });
 
+// Add User Page
+app.get('/user/add', function(req, res, next){
+		res.render('adduser');
+});
+
+// Process Add User Page
+app.post('/user/add', function(req, res, next){
+		let id = req.body.id;
+		let first_name = req.body.first_name;
+		let last_name = req.body.last_name;
+		let email = req.body.email;
+		let phone = req.body.phone;
+
+		client.hmset(id, [
+			   'first_name', first_name,
+			   'last_name', last_name,
+			   'email', email,
+			   'phone', phone
+			], function(err, reply){
+				if(err){
+					console.log(err);
+				}
+				console.log(reply);
+				res.redirect('/');
+			});
+});
+
 app.listen(port, function(){
 		console.log('Server started on port'+port);
 });
